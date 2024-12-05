@@ -1,10 +1,12 @@
 
 body{
     color: #fff;
+    background: #09001d;
+    overflow: hidden;
 }
 
 .header{
-    position: relative;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -28,8 +30,9 @@ body{
     font-size: 18px;
     color: #fff;
     text-decoration: none;
-    font-weight: 700;
+    font-weight: 500;
     margin-left: 35px;
+    transition: .3s;
 }
 
 .navbar a:hover {
@@ -41,10 +44,22 @@ body{
     background: url(../images/—Pngtree—science\ or\ technology\ background\ with_1226624.jpg) no-repeat;
     background-size: cover;
     background-position: center;
+    pointer-events: auto;
 }
 
-.home {
+.main.active {
+    filter: blur(15px);
+    pointer-events: none;
+}
+
+.container {
+    display: flex;
     height: 100vh;
+    width: 200%;
+}
+.home {
+    position: relative;
+    left: -50%;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -93,24 +108,31 @@ body{
     box-shadow: none;
 }
 
-.poput-info {
+.popup-info {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(.9);
     background: #fff;
     border-radius: 6px;
     padding: 10px 25px;
     opacity: 0;
     pointer-events: none;
+    transition: .3s ease;
 }
 
-.poput-info h2{
+.popup-info.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(.9);
+}
+
+.popup-info h2{
     font-size: 50px;
     color: #c40094;
 }
 
-.poput-info .info{
+.popup-info .info{
     display: inline-block;
     font-size: 16px;
     color:#333;
@@ -118,7 +140,7 @@ body{
     margin: 4px 0;
 }
 
-.poput-info .btn-group{
+.popup-info .btn-group{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -127,7 +149,7 @@ body{
     padding: 15px 0 7px;
 }
 
-.poput-info .btn-group .info-btn{
+.popup-info .btn-group .info-btn{
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -146,17 +168,31 @@ body{
     transition: .5s;
 }
 
-.poput-info .btn-group .info-btn:nth-child(1) {
+.popup-info .btn-group .info-btn:nth-child(1) {
     background: transparent;
     color: #c40094;
 }
 
-.poput-info .btn-group .info-btn:nth-child(1):hover {
+.popup-info .btn-group .info-btn:nth-child(1):hover {
     background: #c40094;
     color: #fff;
 }
 
-.poput-info .btn-group .info-btn:nth-child(2):hover {
+.popup-info .btn-group .info-btn:nth-child(2):hover {
     background: #950170;
     border-color: #950170;
+}
+
+.quiz-section {
+    position: relative;
+    left: -50%;
+    width: 100%;
+    background: seagreen;
+    transition: .8s ease-in-out;
+    transition-delay: .25s;
+    z-index: 100;
+}
+
+.quiz-section.active {
+    left: 0;
 }
